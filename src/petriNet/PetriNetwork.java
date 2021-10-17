@@ -24,36 +24,56 @@ public class PetriNetwork implements PetriNet {
 	@Override
 	public void addArcSortant(int weight, Place place, Transition transition) {
 		// TODO Auto-generated method stub
-		
-		this.listArcSortant.add(new ArcSortant(weight,place,transition));
-		transition.addArcSortant(this.listArcSortant.get(this.listArcSortant.size()-1));
+		try {
+			this.listArcSortant.add(new ArcSortant(weight,place,transition));
+			transition.addArcSortant(this.listArcSortant.get(this.listArcSortant.size()-1));
+		}catch (Exception e) {
+			System.out.println("NullException : "+e.getMessage());
+		}
 	}
 
 	@Override
 	public void addArcSortantZero(Place place, Transition transition) {
 		// TODO Auto-generated method stub
-		this.listArcSortant.add(new ArcZero(place,transition));
-		transition.addArcSortant(this.listArcSortant.get(this.listArcSortant.size()-1));
+		try {
+			this.listArcSortant.add(new ArcZero(place,transition));
+			transition.addArcSortant(this.listArcSortant.get(this.listArcSortant.size()-1));
+		} catch (Exception e) {
+			System.out.println("NullException : "+e.getMessage());
+		}
 	}
 
 	@Override
 	public void addArcSortantVideur(Place place, Transition transition) {
 		// TODO Auto-generated method stub
-		this.listArcSortant.add(new ArcVideur(place,transition));
-		transition.addArcSortant(this.listArcSortant.get(this.listArcSortant.size()-1));
+		try {
+			this.listArcSortant.add(new ArcVideur(place,transition));
+			transition.addArcSortant(this.listArcSortant.get(this.listArcSortant.size()-1));
+		} catch (Exception e) {
+			System.out.println("NullException : "+e.getMessage());
+		}
+		
 	}
 
 	@Override
 	public void addArcEntrant(int weight, Place place, Transition transition) {
 		// TODO Auto-generated method stub
-		this.listArcEntrant.add(new ArcEntrant(weight,place,transition));
-		transition.addArcEntrant(this.listArcEntrant.get(this.listArcEntrant.size()-1));
+		try {
+			this.listArcEntrant.add(new ArcEntrant(weight,place,transition));
+			transition.addArcEntrant(this.listArcEntrant.get(this.listArcEntrant.size()-1));
+		} catch (Exception e) {
+			System.out.println("NullException : "+e.getMessage());
+		}
 	}
 
 	@Override
-	public void addPlace(int nbToken) {
+	public void addPlace(int nbToken)  {
 		// TODO Auto-generated method stub
-		this.listPlace.add(new Place(nbToken));
+		try{
+			this.listPlace.add(new Place(nbToken));
+		} catch (Exception e) {
+			System.out.println("NbTokenNegException :"+e.getMessage());
+		}
 
 	}
 
@@ -131,5 +151,16 @@ public class PetriNetwork implements PetriNet {
 		
 	}
 		
+	public String toString() {
+		String msg="";
+		for (ArcSortant as:this.listArcSortant) {
+			msg=msg+as.getPlace().toString()+as.toString()+as.getTransition().toString()+"/n";
+		}
+		for (ArcEntrant ae:this.listArcEntrant) {
+			msg=msg+ae.getTransition().toString()+ae.toString()+ae.getPlace().toString()+"/n";
+		}
+		return msg;
+		
+	}
 
 }

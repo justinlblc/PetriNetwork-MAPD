@@ -1,12 +1,21 @@
 package petriElement;
 
+import Error.NegParException;
+
 public class Place {
-	
+	private static int nb;
+	private String name;
 	private int nbToken;
 	
-	public Place(int n) {
+	public Place(int n) throws NegParException {
+		if (n<0) {
+			throw new NegParException("Nb of token");
+		}
 		this.nbToken=n;
+		this.name="P"+nb;
+		nb++;
 	}
+
 	
 	public int getNbToken() {
 		return this.nbToken;
@@ -20,6 +29,9 @@ public class Place {
 		this.nbToken+=n;
 	}
 	
+	public String toString() {
+		return this.name + " : "+nbToken;
+	}
 	
 	
 	
