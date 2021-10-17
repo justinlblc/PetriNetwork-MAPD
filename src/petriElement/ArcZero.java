@@ -14,6 +14,6 @@ public class ArcZero extends ArcSortant {
 	}
 	
 	public String toString() {
-		return "--------Zero------->";
+		return place.toString()+  " --------Zero-------> " + transition.toString();
 	}
 }

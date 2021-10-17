@@ -44,7 +44,7 @@ class ArcZeroTest {
 	
 	@Test
 	void testToString() {
-		assertEquals(a0.toString(), "--------Zero------->" );
+		assertEquals(a0.toString(), "P0 : 1 --------Zero-------> T0" );
 	}
 	
 	

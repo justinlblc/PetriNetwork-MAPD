@@ -34,6 +34,14 @@ public interface PetriNet {
 	// Supprime l'ARrcEntrant se trouvant à la position index de la liste des ArcEntrants
 	public boolean deleteArcEntrant(int index);
 	
+	public ArcEntrant getArcEntrant(int index);
+	
+	public ArcSortant getArcSortant(int index);
+	
+	public Place getPlace(int index);
+	
+	public Transition getTransition(int index);
+	
 	// Tire une transition tirable de façon aléatoire 
 	public void fire();
 

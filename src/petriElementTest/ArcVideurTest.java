@@ -47,7 +47,7 @@ class ArcVideurTest {
 	
 	@Test
 	void testToString() {
-		assertEquals(av.toString(), "-------Videur------>" );
+		assertEquals(av.toString(), "P0 : 1 -------Videur------> T0" );
 	}
 	
 	

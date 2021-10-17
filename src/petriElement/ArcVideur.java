@@ -19,6 +19,6 @@ public class ArcVideur extends ArcSortant {
 	}
 	
 	public String toString() {
-		return "-------Videur------>";
+		return place.toString()+" -------Videur------> " + transition.toString();
 	}
 }

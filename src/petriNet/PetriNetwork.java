@@ -31,7 +31,7 @@ public class PetriNetwork implements PetriNet {
 			System.out.println("NullException : "+e.getMessage());
 		}
 	}
-
+	
 	@Override
 	public void addArcSortantZero(Place place, Transition transition) {
 		// TODO Auto-generated method stub
@@ -147,20 +147,37 @@ public class PetriNetwork implements PetriNet {
 		fireableTransition.get(alea).fire();
 	}
 	
-	public static void main(String[] args) {
-		
-	}
 		
 	public String toString() {
 		String msg="";
 		for (ArcSortant as:this.listArcSortant) {
-			msg=msg+as.getPlace().toString()+as.toString()+as.getTransition().toString()+"/n";
+			msg=msg+as.toString()+"/n";
 		}
 		for (ArcEntrant ae:this.listArcEntrant) {
-			msg=msg+ae.getTransition().toString()+ae.toString()+ae.getPlace().toString()+"/n";
+			msg=msg+ae.toString()+"/n";
 		}
 		return msg;
 		
+	}
+	@Override
+	public ArcEntrant getArcEntrant(int index) {
+		// TODO Auto-generated method stub
+		return listArcEntrant.get(index);
+	}
+	@Override
+	public ArcSortant getArcSortant(int index) {
+		// TODO Auto-generated method stub
+		return listArcSortant.get(index);
+	}
+	@Override
+	public Place getPlace(int index) {
+		// TODO Auto-generated method stub
+		return listPlace.get(index);
+	}
+	@Override
+	public Transition getTransition(int index) {
+		// TODO Auto-generated method stub
+		return listTransition.get(index);
 	}
 
 }

@@ -47,7 +47,7 @@ public class ArcSortant {
 
 	
 	public String toString() {
-		return "-------"+weight+"------>";
+		return place.toString()+  " -------"+weight+"------> "+transition.toString();
 	}
 	
 }

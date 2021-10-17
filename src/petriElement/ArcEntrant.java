@@ -38,6 +38,6 @@ public class ArcEntrant {
 	}
 	
 	public String toString() {
-		return  transition.toString()+"------------"+weight+"------------->" + place.toString();
+		return  transition.toString()+" -------"+weight+"------> " + place.toString();
 	}
 }
