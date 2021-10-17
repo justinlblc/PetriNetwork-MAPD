@@ -72,6 +72,6 @@ class ArcSortantTest {
 	
 	@Test
 	void testToString() {
-		assertEquals(a0.toString(),"P1 : 1 -------"+2+"------> T1");
+		assertEquals(a0.toString(),"P31 : 1 -------"+2+"------> T22");
 	}
 }

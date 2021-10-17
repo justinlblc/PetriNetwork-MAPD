@@ -51,7 +51,7 @@ class PlaceTest {
 	
 	@Test
 	public void testToString() {
-		assertEquals(p0.toString(),"P4 : 1");
+		assertEquals(p0.toString(),"P24 : 1");
 	}
 	
 

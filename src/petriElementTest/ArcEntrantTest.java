@@ -63,6 +63,6 @@ class ArcEntrantTest {
 	
 	@Test
 	void testToString() {
-		assertEquals(ae.toString(),"T1 -------"+2+"------> P1 : 1");
+		assertEquals(ae.toString(),"T5 -------"+2+"------> P5 : 1");
 	}
 }

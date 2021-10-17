@@ -12,7 +12,16 @@ public class Transition {
 		nb++;
 	}
 	
-
+	public ArcSortant getArcSortant(int index) {
+		return listArcSortant.get(index);
+	}
+	
+	
+	public ArcEntrant getArcEntrant(int index) {
+		return listArcEntrant.get(index);
+	}
+	
+	
 	public void addArcSortant(ArcSortant as) {
 		this.listArcSortant.add(as);
 	}
@@ -31,17 +40,14 @@ public class Transition {
 	}
 	
 	
-	public boolean fire() {
-		if (!this.fireable()) {
-			return false;
-		}
+	public void fire() {
 		for (ArcSortant as:this.listArcSortant) {
 			as.substract();
 		}
 		for (ArcEntrant ae:this.listArcEntrant) {
 			ae.add();
 		}
-		return true;
+		
 	}
 	
 	public boolean  dellArcSortant(ArcSortant as) {
