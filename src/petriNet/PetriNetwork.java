@@ -3,6 +3,9 @@ package petriNet;
 import petriElement.*;
 import java.util.Vector;
 
+import Error.NegParException;
+import Error.NullException;
+
 public class PetriNetwork implements PetriNet {
 	private Vector<ArcEntrant> listArcEntrant;
 	private Vector<ArcSortant> listArcSortant;
@@ -15,6 +18,8 @@ public class PetriNetwork implements PetriNet {
 		listPlace = new Vector<Place>();
 		listTransition = new Vector<Transition>();
 	}
+	
+	
 	@Override
 	public void addTransition() {
 		// TODO Auto-generated method stub
@@ -27,8 +32,10 @@ public class PetriNetwork implements PetriNet {
 		try {
 			this.listArcSortant.add(new ArcSortant(weight,place,transition));
 			transition.addArcSortant(this.listArcSortant.get(this.listArcSortant.size()-1));
-		}catch (Exception e) {
+		}catch (NullException e) {
 			System.out.println("NullException : "+e.getMessage());
+		}catch (NegParException e) {
+			System.out.println("NegParException : "+e.getMessage());
 		}
 	}
 	
@@ -61,8 +68,10 @@ public class PetriNetwork implements PetriNet {
 		try {
 			this.listArcEntrant.add(new ArcEntrant(weight,place,transition));
 			transition.addArcEntrant(this.listArcEntrant.get(this.listArcEntrant.size()-1));
-		} catch (Exception e) {
+		} catch (NullException e) {
 			System.out.println("NullException : "+e.getMessage());
+		} catch (NegParException e) {
+			System.out.println("NegParException : "+e.getMessage());
 		}
 	}
 
@@ -80,8 +89,11 @@ public class PetriNetwork implements PetriNet {
 	@Override
 	public void deleteTransition(int index) {
 		// TODO Auto-generated method stub
+		// To delete a transition, we need to remove it from the list of transition...
 		Transition t = listTransition.get(index);
 		listTransition.remove(index);
+		
+		// ... but we also need to remove all the edges (ArcSortant or ArcEntrant) which are linked to this transition 
 		for (ArcSortant as: listArcSortant) {
 			if (as.getTransition()==t) {
 				int j = listArcSortant.indexOf(as);
@@ -99,6 +111,8 @@ public class PetriNetwork implements PetriNet {
 	@Override
 	public void deletePlace(int index) {
 		// TODO Auto-generated method stub
+		
+		// Same process as a transition
 		Place p = listPlace.get(index);
 		listPlace.remove(index);
 		for (ArcSortant as: listArcSortant) {
@@ -116,8 +130,12 @@ public class PetriNetwork implements PetriNet {
 	}
 
 	@Override
+	
 	public boolean deleteArcSortant(int index) {
 		// TODO Auto-generated method stub
+		
+		// To delete an edge, we just need to remove it from the list of edges (listArcSortant or listArcEntrant) 
+		// and we also need to remove it from the transition linked to.
 		ArcSortant as = this.listArcSortant.get(index);
 		listArcSortant.remove(index);
 		Transition t = as.getTransition();
@@ -127,6 +145,8 @@ public class PetriNetwork implements PetriNet {
 	@Override
 	public boolean deleteArcEntrant(int index) {
 		// TODO Auto-generated method stub
+		
+		// Same process as deleteArcSortant()
 		ArcEntrant ae = this.listArcEntrant.get(index);
 		listArcEntrant.remove(index);
 		Transition t = ae.getTransition();
@@ -136,6 +156,8 @@ public class PetriNetwork implements PetriNet {
 	@Override
 	public void fire() {
 		// TODO Auto-generated method stub
+		
+		// First of all, we create a new list of fireable transition by calling fireable() for each transition of the network
 		Vector<Transition> fireableTransition = new Vector<Transition>();
 		for (Transition tran:this.listTransition) {
 			if (tran.fireable()){
@@ -143,8 +165,11 @@ public class PetriNetwork implements PetriNet {
 			}
 		}
 		
+		// Then a random transition is chosen from the this new list
 		int alea = (int) Math.random() * (fireableTransition.size());
 		fireableTransition.get(alea).fire();
+		
+		if (fireableTransition.size()==0) System.out.println("No fireable transition");
 	}
 	
 		
@@ -162,21 +187,37 @@ public class PetriNetwork implements PetriNet {
 	@Override
 	public ArcEntrant getArcEntrant(int index) {
 		// TODO Auto-generated method stub
+		if (index<0 || index >=listArcEntrant.size() ) {
+			System.out.println("Exception : Index out of range");
+			return null;
+		}
 		return listArcEntrant.get(index);
 	}
 	@Override
 	public ArcSortant getArcSortant(int index) {
 		// TODO Auto-generated method stub
+		if (index<0 || index >=listArcSortant.size() ) {
+			System.out.println("Exception : Index out of range");
+			return null;
+		}
 		return listArcSortant.get(index);
 	}
 	@Override
 	public Place getPlace(int index) {
 		// TODO Auto-generated method stub
+		if (index<0 || index >=listPlace.size() ) {
+			System.out.println("Exception : Index out of range");
+			return null;
+		}
 		return listPlace.get(index);
 	}
 	@Override
 	public Transition getTransition(int index) {
 		// TODO Auto-generated method stub
+		if (index<0 || index >=listTransition.size() ) {
+			System.out.println("Exception : Index out of range");
+			return null;
+		}
 		return listTransition.get(index);
 	}
 

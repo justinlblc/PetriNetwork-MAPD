@@ -31,6 +31,8 @@ public class Transition {
 	}
 	
 	public boolean fireable() {
+		
+		// The transition is fireable if all the ArcSortant edges are activated 
 		for (ArcSortant as:this.listArcSortant) {
 			if (!(as.arcState())) {
 				return false;

@@ -9,7 +9,7 @@ public class ArcEntrant {
 	private Place place;
 	private Transition transition;
 	
-	// Créer une instance d'ArcEntrant en initialisant son poids et la place vers laquelle elle pointe 
+	
 	public ArcEntrant(int n, Place p, Transition t) throws NullException, NegParException {
 		if (n<0) {
 			throw new NegParException("Arc weight");
