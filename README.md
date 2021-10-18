@@ -7,7 +7,9 @@ The package PetriElement contains all the object needed to build a PetriNetwork 
 - Transition
 - Edges : ArcSortant, ArcVideur, ArcZero, ArcEntrant
 
-## PetriNet
+# PetriNet
 This package contains an implementation of PetriNetwork.
 The PetriNetwork implements an Interface called PetriNet which contains the basic methods needed to run a petri network.
  
+# PetriElementTest
+The package contains a set of petriElement's tests with a full coverage.
