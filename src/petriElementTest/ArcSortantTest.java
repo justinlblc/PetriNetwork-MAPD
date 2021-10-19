@@ -17,13 +17,18 @@ class ArcSortantTest {
 	private static ArcSortant a0;
 	private static Transition t;
 	
-	
 	@Test
 	@BeforeEach
-	void testConstructor() throws NegParException, NullException {
+	void setUp() throws NullException, NegParException {
+		Transition.reset();
+		Place.reset();
 		p = new Place(1);
 		t = new Transition();
 		a0 = new ArcSortant(2,p,t);
+	}
+	
+	@Test
+	void testConstructor() throws NegParException, NullException {
 		Assertions.assertThrows(NullException.class, () -> {
 		    new ArcSortant(0,null,t);
 		});
@@ -62,6 +67,10 @@ class ArcSortantTest {
 		assertEquals(a0.arcState(),true);
 	}
 	
+	@Test
+	void testEquals() {
+		assertEquals(false, a0.equals(null));
+	}
 	
 	@Test
 	void testSubstract() {
@@ -72,6 +81,6 @@ class ArcSortantTest {
 	
 	@Test
 	void testToString() {
-		assertEquals(a0.toString(),"P31 : 1 -------"+2+"------> T22");
+		assertEquals(a0.toString(),"P0 : 1 -------"+2+"------> T0");
 	}
 }

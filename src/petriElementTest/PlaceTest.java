@@ -20,11 +20,16 @@ class PlaceTest {
 	
 	private static Place p0;
 
-
 	@Test
 	@BeforeEach
-	public void testConstructor() throws NegParException{
+	public void setUp() throws NegParException {
+		Place.reset();
 		p0 = new Place(1);
+	}
+	
+	
+	@Test
+	public void testConstructor() throws NegParException{
 		Assertions.assertThrows(NegParException.class, () -> {
 		    new Place(-1);
 		});
@@ -34,8 +39,6 @@ class PlaceTest {
 	public void testGetNbToken() {
 		assertEquals(p0.getNbToken(),1);
 	}
-	
-	
 	
 	@Test
 	public void testAddToken() {
@@ -51,7 +54,7 @@ class PlaceTest {
 	
 	@Test
 	public void testToString() {
-		assertEquals(p0.toString(),"P24 : 1");
+		assertEquals(p0.toString(),"P0 : 1");
 	}
 	
 

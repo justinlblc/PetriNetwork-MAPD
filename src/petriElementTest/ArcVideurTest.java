@@ -22,10 +22,18 @@ class ArcVideurTest {
 	
 	@Test
 	@BeforeEach
-	void testConstructor() throws NegParException, NullException {
+	void setUp() throws NullException, NegParException {
+		Transition.reset();
+		Place.reset();
 		p = new Place(1);
 		t = new Transition();
 		av = new ArcVideur(p,t);
+	}
+	
+	
+	@Test
+	void testConstructor() throws NegParException, NullException {
+		
 		Assertions.assertThrows(NullException.class, () -> {
 		    new ArcVideur(null,t);
 		});

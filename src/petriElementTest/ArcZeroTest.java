@@ -20,10 +20,17 @@ class ArcZeroTest {
 	
 	@Test
 	@BeforeEach
-	void testConstructor() throws NegParException, NullException {
+	void setUp() throws NullException, NegParException {
+		Transition.reset();
+		Place.reset();
 		p = new Place(1);
 		t = new Transition();
 		a0 = new ArcZero(p,t);
+	}
+	
+	@Test
+	void testConstructor() throws NegParException, NullException {
+		
 		Assertions.assertThrows(NullException.class, () -> {
 		    new ArcZero(null,t);
 		});
@@ -44,7 +51,7 @@ class ArcZeroTest {
 	
 	@Test
 	void testToString() {
-		assertEquals(a0.toString(), "P38 : 1 --------Zero-------> T29" );
+		assertEquals(a0.toString(), "P0 : 1 --------Zero-------> T0" );
 	}
 	
 	

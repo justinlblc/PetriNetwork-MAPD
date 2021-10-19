@@ -22,6 +22,17 @@ class ArcEntrantTest {
 	
 	@Test
 	@BeforeEach
+	void setUp() throws NegParException, NullException {
+		Transition.reset();
+		Place.reset();
+		p = new Place(1);
+		t = new Transition();
+		ae = new ArcEntrant(2,p,t);
+	}
+	
+	
+	@Test
+	@BeforeEach
 	void testConstructor() throws NegParException, NullException {
 		p = new Place(1);
 		t = new Transition();
@@ -57,12 +68,11 @@ class ArcEntrantTest {
 	@Test
 	void testSubstract() {
 		ae.add();
-	
 		assertEquals(p.getNbToken(),3);
 	}
 	
 	@Test
 	void testToString() {
-		assertEquals(ae.toString(),"T5 -------"+2+"------> P5 : 1");
+		assertEquals(ae.toString(),"T1 -------"+2+"------> P1 : 1");
 	}
 }

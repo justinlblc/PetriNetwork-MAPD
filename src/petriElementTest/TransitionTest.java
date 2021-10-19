@@ -21,7 +21,9 @@ class TransitionTest {
 	
 	@Test
 	@BeforeEach
-	void testConstructor() {
+	void setUp() {
+		Transition.reset();
+		Place.reset();
 		t0 = new Transition();
 	}
 	

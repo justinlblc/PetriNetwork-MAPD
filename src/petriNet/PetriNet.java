@@ -22,6 +22,13 @@ public interface PetriNet {
 	// Ajoute un arc d'une Transition vers une Place
 	public void addArcEntrant(int weight, Place place, Transition transition);
 	
+	//Récupère la taille de la liste des arcs sortant/entrant/place/transition
+	
+	public int getNbArcEntrant();
+	public int getNbArcSortant();
+	public int getNbPlace();
+	public int getNbTransition();
+	
 	// Supprime la Transition se trouvant à la position index de la liste des Transitions
 	public void deleteTransition(int index);
 	
