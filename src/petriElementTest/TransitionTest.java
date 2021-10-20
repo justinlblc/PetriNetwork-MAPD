@@ -119,6 +119,9 @@ class TransitionTest {
 		
 		p1.substractToken(2);
 		assertEquals(t0.fireable(),true);
+		
+		Transition t1 = new Transition();
+		assertEquals(t1.fireable(),true);
 	}
 	
 	@Test
